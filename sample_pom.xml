@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<artifactId>BI</artifactId>
+		<groupId>Sephora-BI.BI-Integration</groupId>
+		<version>1</version>
+	</parent>
+	<groupId>Sephora-BI.BI-Integration</groupId>
+	<artifactId>Client15</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<name>Client15</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>1.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>axis</groupId>
+			<artifactId>axis-jaxrpc</artifactId>
+			<version>1.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-discovery</groupId>
+			<artifactId>commons-discovery</artifactId>
+			<version>0.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.soap</groupId>
+			<artifactId>saaj-impl</artifactId>
+			<version>1.3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+			<version>1.6.2</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+	<build>
+		<plugins>
+		
+
+
+
+			<plugin>
+				<groupId>tacitknowledge.com</groupId>
+				<artifactId>tk-maven-jbossws-codegen</artifactId>
+				<dependencies>
+				
+					<dependency>
+						<groupId>Sephora</groupId>
+						<artifactId>ejb-jar</artifactId>
+						<version>2.0</version>
+						<scope>system</scope>
+						<systemPath>../server/SephoraCRM-ejb-jar/target/SephoraCRM-ejb-jar.jar</systemPath>
+					</dependency>
+					
+					<dependency>
+						<groupId>org.jboss.ws.native</groupId>
+						<artifactId>jbossws-native-client</artifactId>
+						<version>${jbossws-version}</version>
+						<scope>compile</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.ws</groupId>
+						<artifactId>jbossws-jboss423</artifactId>
+						<version>${jbossws-version}</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.ws.native</groupId>
+						<artifactId>jbossws-native-core</artifactId>
+						<version>${jbossws-version}</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.ws.native</groupId>
+						<artifactId>jbossws-native-jaxws</artifactId>
+						<version>${jbossws-version}</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.ws</groupId>
+						<artifactId>jbossws-spi</artifactId>
+						<version>1.2.1.GA</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.ws</groupId>
+						<artifactId>jbossws-framework</artifactId>
+						<version>${jbossws-version}</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>org.jboss.client</groupId>
+						<artifactId>jbossall-client</artifactId>
+						<version>${jboss-version}</version>
+						<scope>provided</scope>
+					</dependency>
+					<dependency>
+						<groupId>javax.persistence</groupId>
+						<artifactId>persistence-api</artifactId>
+						<version>1.0</version>
+						<scope>runtime</scope>
+					</dependency>
+				</dependencies>
+				<configuration>
+					<endpoints>
+						<item>com.sephora.integration.service.BICardReplacement</item>
+						<item>com.sephora.integration.service.BICardTransfer</item>
+						<item>com.sephora.integration.service.BIPointsTransfer</item>
+						<item>com.sephora.integration.service.BIPointsUpdate</item>
+						<item>com.sephora.integration.service.BIStatusChange</item>
+						<item>com.sephora.integration.service.CustomerCleanup</item>
+						<item>com.sephora.integration.service.CustomerLookup</item>
+						<item>com.sephora.integration.service.CustomerProfileLookup</item>
+						<item>com.sephora.integration.service.CustomerProfileUpdate</item>
+						<item>com.sephora.integration.service.CustomerRegistration</item>
+						<item>com.sephora.integration.service.CustomerSearch</item>
+						<item>com.sephora.integration.service.CustomerUpdate</item>
+						<item>com.sephora.integration.service.OrderCancel</item>
+						<item>com.sephora.integration.service.OrderCreate</item>
+						<item>com.sephora.integration.service.OrderHistory</item>
+						<item>com.sephora.integration.service.POSSearch</item>
+						<item>com.sephora.integration.service.PromotionAvailability</item>
+						<item>com.sephora.integration.service.PromotionHistory</item>
+						<item>com.sephora.integration.service.PromotionRedemption</item>
+						<item>com.sephora.integration.service.SegmentLookup</item>
+					</endpoints>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsprovide</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+
+		
+		
+		
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>axistools-maven-plugin</artifactId>
+
+				<configuration>
+					<urls>
+						<url>file:target/generated-wsdl/BICardReplacementService.wsdl</url>
+						<url>file:target/generated-wsdl/BIPointsTransferService.wsdl</url>
+						<url>file:target/generated-wsdl/BIStatusChangeService.wsdl</url>
+						<url>file:target/generated-wsdl/POSSearchService.wsdl</url>
+						<url>file:target/generated-wsdl/BICardTransferService.wsdl</url>
+						<url>file:target/generated-wsdl/BIPointsUpdateService.wsdl</url>
+						<url>file:target/generated-wsdl/OrderCancelService.wsdl</url>
+						<url>file:target/generated-wsdl/OrderCreateService.wsdl</url>
+						<url>file:target/generated-wsdl/CustomerProfileUpdateService.wsdl</url>
+						<url>file:target/generated-wsdl/CustomerRegistrationService.wsdl</url>
+						<url>file:target/generated-wsdl/PromotionRedemptionService.wsdl</url>
+						<url>file:target/generated-wsdl/OrderHistoryService.wsdl</url>
+						<url>file:target/generated-wsdl/CustomerProfileLookupService.wsdl</url>
+						<url>file:target/generated-wsdl/CustomerLookupService.wsdl</url>
+						<url>file:target/generated-wsdl/PromotionHistoryService.wsdl</url>
+						<url>file:target/generated-wsdl/PromotionAvailabilityService.wsdl</url>
+						<url>file:target/generated-wsdl/CustomerUpdateService.wsdl</url>
+						<url>file:target/generated-wsdl/CustomerSearchService.wsdl</url>
+						<url>file:target/generated-wsdl/CustomerCleanupService.wsdl</url>
+						<url>file:target/generated-wsdl/SegmentLookupService.wsdl</url>
+					</urls>
+					<packageSpace>com.sephora.integration.service</packageSpace>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<properties>
+		<ws-host>127.0.0.1:8080/SephoraCRMService</ws-host>
+		<jbossws-version>3.0.4.GA</jbossws-version>
+		<jboss-version>4.2.3.GA</jboss-version>
+	</properties>
+	
+	<repositories>
+		<repository>
+			<id>jboss-public</id>
+			<name>JBoss Public Repository</name>
+			<url>http://repository.jboss.com/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+	
+	
+</project>

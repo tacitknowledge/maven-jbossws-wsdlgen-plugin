@@ -1,0 +1,95 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>tk-maven-plugins</artifactId>
+        <groupId>com.tacitknowledge.maven.plugins</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>tk-maven-jbossws-codegen-plugin</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>maven-plugin</packaging>
+
+    <name>Maven JbossWS Codegen Plugin</name>
+    <description>
+        Maven plugin to generate WSDL from JBoss webservice classes
+    </description>
+    <url>http://repo1.tacitknowledge.com/repository/public/tk-maven-jbossws-codegen-plugin</url>
+
+    <dependencies>
+	<dependency>
+<groupId>jboss.jbossws-spi</groupId>
+<artifactId>jbossws-spi</artifactId>
+<version>1.0.2.GA</version>
+<scope>provided</scope>
+</dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-artifact</artifactId>
+            <version>2.0</version>
+        </dependency>
+        <dependency>
+<groupId>jboss.jbossws</groupId>
+<artifactId>jbossws-core</artifactId>
+<version>3.0.1-native-2.0.4.GA</version>
+<!--
+            <groupId>org.jboss.ws.native</groupId>
+            <artifactId>jbossws-native-core</artifactId>
+            <version>${jbossws-version}</version>
+-->
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>woodstox</groupId>
+                    <artifactId>wstx-lgpl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <properties>
+        <jbossws-version>3.0.4.GA</jbossws-version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>jboss-public</id>
+            <name>JBoss Public Repository</name>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+</project>
